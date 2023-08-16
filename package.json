@@ -1,0 +1,51 @@
+{
+  "name": "electron-auto-updater",
+  "version": "1.0.0",
+  "description": "Electron autoupdater project",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electronmon . ",
+    "build": "electron-builder --publish never",
+    "publish": "electron-builder --publish always"
+  },
+  "author": "Rozygeldiyew",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^26.0.0",
+    "electron-builder": "^24.6.3",
+    "electronmon": "^2.0.2"
+  },
+  "dependencies": {
+    "electron-updater": "^6.1.1"
+  },
+  "build": {
+    "appId": "com.electron.autoupdater",
+    "productName": "Autoupdater",
+    "copyright": "Copyright © R 2023",
+    "extraFiles": [
+      ".env"
+    ],
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://192.168.5.94:4001/updates/"
+      }
+    ],
+    "nsis": {
+      "allowToChangeInstallationDirectory": true,
+      "oneClick": false,
+      "runAfterFinish": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Electron Autoupdater"
+    },
+    "directories": {
+      "buildResources": ".",
+      "output": "./build"
+    },
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
